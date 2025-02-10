@@ -2,14 +2,8 @@ import React, { useState } from 'react';
 import BigBoard, { Player } from './bigBoard';
 import PlayerList from './playerList';
 import BoardParameters from './boardParametes';
+import { initialPlayerPool } from '../data/players';
 
-const initialPlayerPool: Player[] = [
-    { name: "Caleb Williams", position: "QB", age: 22, team: "USC" },
-    { name: "Drake Maye", position: "QB", age: 21, team: "UNC" },
-    { name: "Marvin Harrison Jr.", position: "WR", age: 21, team: "Ohio State" },
-    { name: "Malik Nabers", position: "WR", age: 21, team: "LSU" },
-    { name: "TreVeyon Henderson", position: "TE", age: 21, team: "Ohio State" }
-];
 
 const MainComponent: React.FC = () => {
     const [teams, setTeams] = useState<number>(12);
