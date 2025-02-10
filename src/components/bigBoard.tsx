@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DraftSpot from './draftSpot';
+
+export interface Player {
+    name: string;
+    position: string;
+    age: number;
+    team: string;
+}
 
 interface BigBoardProps {
     teams: number;
     rounds: number;
+    players: (Player | null)[][];
+    addPlayerToSpot: (row: number, col: number, player: Player) => void;
 }
 
-const BigBoard: React.FC<BigBoardProps> = ({ teams, rounds }) => {
-    const [players, setPlayers] = useState<(string | null)[][]>(
-        Array.from({ length: rounds }, () => Array(teams).fill(null))
-    );
-
+const BigBoard: React.FC<BigBoardProps> = ({ teams, rounds, players }) => {
     return (
         <div
             className="big-board"

@@ -1,7 +1,8 @@
 import React from 'react';
+import { Player } from './bigBoard';
 
 interface DraftSpotProps {
-    player: string | null;
+    player: Player | null;
     row: number;
     col: number;
 }
@@ -9,8 +10,20 @@ interface DraftSpotProps {
 const DraftSpot: React.FC<DraftSpotProps> = ({ player, row, col }) => {
     return (
         <div className="draft-spot">
-            {player ? `${row}.${col} - ${player}` : `${row}.${col}`}
-        </div>
+            {player ? (
+                <>
+                    <p className="slot">{`${row}.${col}`}</p>
+                    <p className="name">{player.name}</p>
+                    <p className={`position ${player.position}`}>{player.position}</p>
+                    <p className="team">{player.team}</p>
+                </>
+            ) : (
+                <div className="slot">
+                    <p>{`${row}.${col}`}</p>
+                </div>
+            )
+            }
+        </div >
     );
 };
 
