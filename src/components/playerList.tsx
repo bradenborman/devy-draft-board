@@ -11,7 +11,7 @@ const PlayerList: React.FC<PlayerListProps> = ({ playerPool, addPlayerToNextOpen
     const [activeYearFilters, setActiveYearFilters] = useState<number[]>([]);
 
     const currentYear = new Date().getFullYear();
-    const yearRange = Array.from({ length: 5 }, (_, i) => currentYear + i);
+    const yearRange = Array.from({ length: 4 }, (_, i) => currentYear + i);
 
     const togglePositionFilter = (position: string) => {
         if (position === 'ALL') {
