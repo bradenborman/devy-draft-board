@@ -18,7 +18,7 @@ const DraftSpot: React.FC<DraftSpotProps> = ({ player, row, col }) => {
                     <p className="team">{player.team}</p>
                 </>
             ) : (
-                <div className="slot">
+                <div className="slot empty">
                     <p>{`${row}.${col}`}</p>
                 </div>
             )

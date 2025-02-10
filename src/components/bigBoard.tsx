@@ -12,7 +12,7 @@ interface BigBoardProps {
     teams: number;
     rounds: number;
     players: (Player | null)[][];
-    addPlayerToSpot: (row: number, col: number, player: Player) => void;
+    addPlayerToSpot: (row: number, col: number, player: Player) => void; /* used with drag and drop later */
 }
 
 const BigBoard: React.FC<BigBoardProps> = ({ teams, rounds, players }) => {

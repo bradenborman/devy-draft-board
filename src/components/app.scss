@@ -9,15 +9,7 @@
     display: flex;
     height: 100vh;
 
-    .player-list {
-        padding: 20px;
-        min-width: 240px;
-        background-color: #f4f4f4;
-        flex-shrink: 0;
-    }
-
     .main-component {
-        padding: 20px;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
