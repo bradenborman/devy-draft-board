@@ -1,0 +1,21 @@
+.big-board {
+    display: grid;
+    grid-template-columns: repeat(var(--teams), 1fr);
+    grid-template-rows: repeat(var(--rounds), 100px);
+    gap: 10px;
+    width: 100%;
+}
+
+.grid-row {
+    display: contents;
+}
+
+.draft-spot {
+    background-color: lightgrey;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
