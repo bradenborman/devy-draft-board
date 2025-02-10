@@ -5,11 +5,12 @@ interface DraftSpotProps {
     player: Player | null;
     row: number;
     col: number;
+    removeDraftedPlayer: (row: number, col: number) => void;
 }
 
-const DraftSpot: React.FC<DraftSpotProps> = ({ player, row, col }) => {
+const DraftSpot: React.FC<DraftSpotProps> = ({ player, row, col, removeDraftedPlayer }) => {
     return (
-        <div className="draft-spot">
+        <div className="draft-spot" onDoubleClick={() => player && removeDraftedPlayer(row, col)}>
             {player ? (
                 <>
                     <p className="slot">{`${row}.${col}`}</p>
@@ -21,10 +22,10 @@ const DraftSpot: React.FC<DraftSpotProps> = ({ player, row, col }) => {
                 <div className="slot empty">
                     <p>{`${row}.${col}`}</p>
                 </div>
-            )
-            }
-        </div >
+            )}
+        </div>
     );
 };
+
 
 export default DraftSpot;

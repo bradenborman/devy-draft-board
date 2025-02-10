@@ -4,7 +4,6 @@ import PlayerList from './playerList';
 import BoardParameters from './boardParametes';
 import { initialPlayerPool } from '../data/players';
 
-
 const MainComponent: React.FC = () => {
     const [teams, setTeams] = useState<number>(12);
     const [rounds, setRounds] = useState<number>(3);
@@ -34,6 +33,20 @@ const MainComponent: React.FC = () => {
         });
     };
 
+    const removeDraftedPlayer = (row: number, col: number) => {
+        setPlayers((prevPlayers) => {
+            const updatedPlayers = prevPlayers.map((rowArr) => [...rowArr]);
+            const playerToRemove = updatedPlayers[row - 1][col - 1];
+            if (playerToRemove) {
+                updatedPlayers[row - 1][col - 1] = null;
+                setPlayerPool((prevPool) => [...prevPool, playerToRemove]);
+            }
+            return updatedPlayers;
+        });
+    };
+
+
+
     return (
         <div className={`main-component ${!isGridCreated ? 'center-content' : ''}`}>
             {!isGridCreated ? (
@@ -47,7 +60,13 @@ const MainComponent: React.FC = () => {
             ) : (
                 <div className="board-container">
                     <PlayerList playerPool={playerPool} addPlayerToNextOpenSpot={addPlayerToNextOpenSpot} />
-                    <BigBoard rounds={rounds} teams={teams} players={players} addPlayerToSpot={() => { }} />
+                    <BigBoard
+                        rounds={rounds}
+                        teams={teams}
+                        players={players}
+                        addPlayerToSpot={() => { }}
+                        removeDraftedPlayer={removeDraftedPlayer}
+                    />
                 </div>
             )}
         </div>

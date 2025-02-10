@@ -13,10 +13,12 @@ interface BigBoardProps {
     teams: number;
     rounds: number;
     players: (Player | null)[][];
-    addPlayerToSpot: (row: number, col: number, player: Player) => void; /* used with drag and drop later */
+    addPlayerToSpot: (row: number, col: number, player: Player) => void;
+    removeDraftedPlayer: (row: number, col: number) => void;
+
 }
 
-const BigBoard: React.FC<BigBoardProps> = ({ teams, rounds, players }) => {
+const BigBoard: React.FC<BigBoardProps> = ({ teams, rounds, players, removeDraftedPlayer }) => {
     return (
         <div
             className="big-board"
@@ -30,6 +32,7 @@ const BigBoard: React.FC<BigBoardProps> = ({ teams, rounds, players }) => {
                             player={players[rowIndex][colIndex]}
                             row={rowIndex + 1}
                             col={colIndex + 1}
+                            removeDraftedPlayer={removeDraftedPlayer}
                         />
                     ))}
                 </div>
